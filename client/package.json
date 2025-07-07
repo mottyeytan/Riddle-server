@@ -1,0 +1,19 @@
+{
+  "name": "riddle-client",
+  "version": "1.0.0",
+  "description": "Riddle game client - frontend interface",
+  "main": "index.html",
+  "scripts": {
+    "start": "live-server --port=3000 --open=/",
+    "dev": "live-server --port=3000 --open=/ --watch=./**/*",
+    "build": "echo \"No build process defined for vanilla JS\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["riddle", "game", "client", "frontend", "html", "css", "javascript"],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  },
+  "dependencies": {}
+}
