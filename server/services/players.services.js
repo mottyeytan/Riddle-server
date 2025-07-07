@@ -1,7 +1,7 @@
 import dal from '../dal/index.dal.js'
 
 export async function createPlayer(name) {
-    const newID = 1;
+    let newID = 1;
 
     newPlayer = {
         id:newID,
