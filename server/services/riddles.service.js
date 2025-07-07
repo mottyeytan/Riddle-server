@@ -31,3 +31,15 @@ async function createRiddle(){
     }
     
 }
+
+
+async function readRiddle(){
+    try{
+        const riddles = await dal.riddles.GetAll();
+        return riddles;
+    }catch(err){
+        console.log(err);
+        return err;
+    }
+}
+
