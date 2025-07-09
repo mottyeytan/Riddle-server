@@ -2,8 +2,8 @@ import dal from '../dal/index.dal.js'
 import { updateRiddleOptions } from '../../client/userInput.js'
 import { riddlesDetails } from '../../client/userInput.js'
 
-async function createRiddle(){
-    const newRiddle = riddleDetails();
+async function createRiddle(riddleBody){
+    const newRiddle = riddleBody;
     let newID = 1;
     let riddles = []
 
@@ -45,11 +45,11 @@ async function readRiddle(){
 }
 
 
-async function updateRiddle(id){
-    const riddle = updateRiddleOptions(id);
+async function updateRiddle(id, riddleBody){
+    const riddle = riddleBody;
     const riddles = await dal.riddles.GetAll()
 
-    const index = riddles.findIndex(r => parseInt(r.id) === parseInt(id));
+    const index = riddles.findIndex(r => r.id === parseInt(id));
 
     if(index !== -1){
         if (riddle.length > 2){
@@ -94,8 +94,8 @@ async function updateRiddle(id){
     }
 }
 
-async function deleteRiddle(){
-    const riddleID = AskForRiddleID();
+async function deleteRiddle(riddleID){
+    
 try{
     const riddles = await dal.riddles.GetAll()
 

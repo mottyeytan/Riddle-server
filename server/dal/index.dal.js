@@ -4,7 +4,7 @@ import {readFile, writeFile} from 'fs/promises'
 const dbPlayers = 'data/players.txt'
 const dbRiddles = 'data/riddles.txt'
 
-const dal = {
+const db = {
     players:{
 
         async GetAll(){
@@ -50,5 +50,5 @@ const dal = {
     }
 }
 
-export default dal
+export default db
 
