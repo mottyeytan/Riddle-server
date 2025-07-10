@@ -1,10 +1,10 @@
-import {  getRiddle, createRiddle, updateRiddle, deleteRiddle } from '../services/riddles.service.js'
+import {  readRiddle, createRiddle, updateRiddle, deleteRiddle } from '../services/riddles.service.js'
 
 //GET
 
 export const getRiddleController = async (req, res) => {
     try{
-        const riddle = await getRiddle();
+        const riddle = await readRiddle();
         res.status(200).json({ riddle });
     }catch(err){
         res.status(500).json({ error: err.message });
@@ -14,12 +14,11 @@ export const getRiddleController = async (req, res) => {
 //POST
 export const createRiddleController = async (req, res) => {
     try{
-        const riddles  = req.body;
+        const riddles = req.body;
 
         await createRiddle(riddles);
 
         res.status(201).json({ message: `Riddle created successfully` });
-        console.log(`Riddle created successfully`);
 
     }catch(err){
         res.status(500).json({ error: err.message });

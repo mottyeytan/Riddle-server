@@ -1,4 +1,4 @@
-import dal from '../dal/index.dal.js'
+import db from '../dal/index.dal.js'
 
 export async function createPlayer(name) {
     let newID = 1;
@@ -10,7 +10,7 @@ export async function createPlayer(name) {
     }
     try{
 
-        const players = await dal.players.GetAll();
+        const players = await db.players.GetAll();
         
         if(players.trim()  !== '' && players.length > 0){
             lastID = players[players.length - 1].id;
@@ -21,7 +21,7 @@ export async function createPlayer(name) {
     
         players.push(newPlayer);
 
-        await dal.players.Write(players);
+        await db.players.Write(players);
 
         console.log("player created successfully");
     
@@ -35,7 +35,7 @@ export async function createPlayer(name) {
 export async function checkPlayerTimeAndUpdate(name, time) {
     try{
 
-        const players = await dal.players.GetAll();
+        const players = await db.players.GetAll();
 
         const index = players.findIndex(player => player.name === name);
 
@@ -61,7 +61,7 @@ export async function checkPlayerTimeAndUpdate(name, time) {
 export async function checkPlayerExists(name){
     try{
 
-        const players = await dal.players.GetAll();
+        const players = await db.players.GetAll();
 
         const found = players.some(player => player.name === name);
 
@@ -76,7 +76,7 @@ export async function checkPlayerExists(name){
 export async function getPlayerRecord(name){
     try{
 
-        const players = await dal.players.GetAll();
+        const players = await db.players.GetAll();
 
         const player = players.find(player => player.name === name);
 

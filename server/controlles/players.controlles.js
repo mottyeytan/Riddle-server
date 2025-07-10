@@ -1,4 +1,4 @@
-import { createPlayer, checkPlayerTimeAndUpdate, checkPlayerExists, getPlayerRecord } from '../services/players.service.js'
+import { createPlayer, checkPlayerTimeAndUpdate, checkPlayerExists, getPlayerRecord } from '../services/players.services.js'
 
 
 //POST

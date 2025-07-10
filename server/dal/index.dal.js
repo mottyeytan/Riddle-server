@@ -1,8 +1,8 @@
 import {readFile, writeFile} from 'fs/promises'
 
 
-const dbPlayers = 'data/players.txt'
-const dbRiddles = 'data/riddles.txt'
+const dbPlayers = '../data/players.txt'
+const dbRiddles = '../data/riddles.txt'
 
 const db = {
     players:{
@@ -52,3 +52,6 @@ const db = {
 
 export default db
 
+
+
+// db.riddles.Write([{"name":"motty"}])
