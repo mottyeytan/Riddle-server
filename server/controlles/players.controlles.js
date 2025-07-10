@@ -6,6 +6,8 @@ export const createPlayerController = async (req, res) => {
     try{
         const name = req.params.name;
 
+        console.log(name);
+
         await createPlayer(name);
 
         res.status(201).json({ message: `Player ${name} created successfully` });

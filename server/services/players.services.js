@@ -1,35 +1,40 @@
 import db from '../dal/index.dal.js'
 
 export async function createPlayer(name) {
+    let players = [];
     let newID = 1;
 
-    newPlayer = {
+    try{
+        const data = await db.players.GetAll();
+        
+        if(Array.isArray(data) && data.length > 0){
+            players = data;
+        
+            if(players.length > 0){
+                const lastID = players[players.length - 1].id;
+                newID = lastID + 1;
+            }  
+        }
+        
+    }catch(err){console.log(err);}
+        
+    
+    const newPlayer = {
         id:newID,
         name:name,
         record: null
     }
+    
+    players.push(newPlayer);
+
     try{
-
-        const players = await db.players.GetAll();
-        
-        if(players.trim()  !== '' && players.length > 0){
-            lastID = players[players.length - 1].id;
-            newID = lastID + 1;
-        }
-    
-        newPlayer.id = newID;
-    
-        players.push(newPlayer);
-
         await db.players.Write(players);
-
-        console.log("player created successfully");
-    
     }catch(err){
         console.log(err);
         return err;
     }
-    
+
+    console.log("player created successfully");
 }
 
 export async function checkPlayerTimeAndUpdate(name, time) {
@@ -42,7 +47,7 @@ export async function checkPlayerTimeAndUpdate(name, time) {
         if(!players[index].record || players[index].record > time){
             players[index].record = time;
 
-            await dal.players.Write(players);
+            await db.players.Write(players);
 
             console.log("player record updated successfully");
             return true;
@@ -87,4 +92,5 @@ export async function getPlayerRecord(name){
         return err;
     }
 }
+
 

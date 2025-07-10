@@ -116,3 +116,8 @@ export function AskForRiddleID(){
     const id = readline.question("Enter the id of the riddle you want to delete: ");
     return id;
 }
+
+export function playerDetails(){
+    const name = readline.question("Enter your name: ");
+    return name;
+}

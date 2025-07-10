@@ -1,15 +1,19 @@
 import {readFile, writeFile} from 'fs/promises'
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
-const dbPlayers = '../data/players.txt'
-const dbRiddles = '../data/riddles.txt'
+const dbPlayers = join(__dirname, '../../data/players.txt')
+const dbRiddles = join(__dirname, '../../data/riddles.txt')
 
 const db = {
     players:{
 
         async GetAll(){
             try{
-                const data =  await readFile(dbPlayers, 'utf8');
+                const data = await readFile(dbPlayers, 'utf8');
                 const players = JSON.parse(data);
                 return players;
             }catch(err){
@@ -54,4 +58,3 @@ export default db
 
 
 
-// db.riddles.Write([{"name":"motty"}])
