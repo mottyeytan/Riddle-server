@@ -119,4 +119,3 @@ try{
 export { createRiddle, readRiddle, updateRiddle, deleteRiddle }
 
 
-// createRiddle({name:"motty",description:"motty is a good boy",correctAnswer:"motty",difficulty:"easy",timeLimit:10,hint:"motty is a good boy", id: null})

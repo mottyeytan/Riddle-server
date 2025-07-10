@@ -34,13 +34,14 @@ export const updateRiddleController = async (req, res) => {
         
         if(riddleBody && id){
             await updateRiddle(id, riddleBody);
+            res.status(200).json({ message: `Riddle updated successfully` });
+            console.log(`Riddle updated successfully`);
         }else{
             res.status(404).json({ message: `Riddle not found or id is missing` });
             console.log(`Riddle not found or id is missing`);
+            return;
         }
 
-        res.status(200).json({ message: `Riddle updated successfully` });
-        console.log(`Riddle updated successfully`);
 
     }catch(err){
         res.status(500).json({ error: err.message });

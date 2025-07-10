@@ -1,11 +1,1 @@
-[
-  {
-    "id": 1,
-    "name": "dfsfs",
-    "description": "fsfsfs",
-    "correctAnswer": "dfsfs",
-    "difficulty": "easy",
-    "timeLimit": 12,
-    "hint": "fsfsfs"
-  }
-]
+[]

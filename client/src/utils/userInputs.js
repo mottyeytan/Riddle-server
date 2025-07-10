@@ -47,7 +47,7 @@ export function updateRiddleOptions(){
             hint = readline.question("Enter the new hint: ");
 
             fullRiddle = {
-                id: parseInt(id),
+                id: id,
                 name: riddleName,
                 description: riddleDescription,
                 correctAnswer: correctAnswer,
@@ -113,6 +113,6 @@ export function updateRiddleOptions(){
 
 
 export function AskForRiddleID(){
-    const id = readline.question("Enter the id of the riddle you want to update: ");
+    const id = readline.question("Enter the id of the riddle you want to delete: ");
     return id;
 }

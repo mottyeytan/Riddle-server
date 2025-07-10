@@ -2,6 +2,7 @@ import { userOption, riddlesDetails, updateRiddleOptions, AskForRiddleID } from 
 
 const baseUrl = 'http://localhost:3000/riddles';
 
+//POST
 export async function createRiddelApi(){
    try{
        const riddles = riddlesDetails();
@@ -46,5 +47,50 @@ export async function readRiddlesAPi(){
     }
 }
 
+//PUT
+export async function updateRiddleController(){
+    const data = updateRiddleOptions();
 
-createRiddelApi();
+    const id = data.id;
+
+    try{
+
+        const response = await fetch(`${baseUrl}/updateRiddle/${id}`, 
+        {   method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+     } )
+
+     if(!response.ok){
+        throw new Error('Failed to update riddle');
+     }
+     console.log(`the riddle ${data.name} has been updated successfully`);
+
+
+    }catch(error){
+        console.log(error);
+    }
+}
+
+//DELETE
+export async function deleteRiddleController(){
+    const id = await AskForRiddleID();
+
+    try{
+        const response = await fetch(`${baseUrl}/deleteRiddle/${id}`, {
+            method: 'DELETE',
+        })
+
+        if(!response.ok){
+            throw new Error('Failed to delete riddle');
+        }
+        console.log(`the riddle ${id} has been deleted successfully`);
+
+    }catch(error){
+        console.log(error);
+    }
+
+}
+
