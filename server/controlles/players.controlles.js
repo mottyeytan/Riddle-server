@@ -22,9 +22,9 @@ export const createPlayerController = async (req, res) => {
 export const checkPlayerTimeAndUpdateController = async (req, res) => {
     
     try{
-        const {name, record} = req.body;
+        const {name, time} = req.body;
 
-        const updated = await checkPlayerTimeAndUpdate(name, record);
+        const updated = await checkPlayerTimeAndUpdate(name, time);
 
         if(updated){
             res.status(200).json({ message: `Player ${name} record updated successfully` });

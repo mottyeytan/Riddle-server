@@ -3,7 +3,7 @@ import { userOption, riddlesDetails, updateRiddleOptions, AskForRiddleID } from 
 export function gameControl(){
     const option = userOption();
     if(option === '1'){
-        return 1
+        
     }else if(option === '2'){
         return 2
     }else if(option === '3'){

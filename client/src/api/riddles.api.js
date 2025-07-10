@@ -39,7 +39,6 @@ export async function readRiddlesAPi(){
         }
 
         const data = await response.json();
-        console.log(data);
         return data;
 
     }catch(error){
@@ -93,4 +92,6 @@ export async function deleteRiddleController(){
     }
 
 }
+
+
 

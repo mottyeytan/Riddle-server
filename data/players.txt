@@ -2,11 +2,11 @@
   {
     "id": 1,
     "name": "motty",
-    "record": null
+    "record": 10
   },
   {
     "id": 2,
     "name": "yakov",
-    "record": null
+    "record": 6
   }
 ]

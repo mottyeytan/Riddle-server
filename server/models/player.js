@@ -1,4 +1,4 @@
-import checkPlayerTimeAndUpdate from "../services/CheckPlayerTimeAndUpdate.js";
+import { checkPlayerTimeAndUpdate } from "../services/players.services.js";
 
 class Player{
     constructor(){
@@ -36,3 +36,5 @@ class Player{
         }
     }
 }
+
+export default Player;

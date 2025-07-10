@@ -1,5 +1,20 @@
 [
   {
-    "name": "motty"
+    "id": 1,
+    "name": "easy math",
+    "description": "what is 5 * 5",
+    "correctAnswer": "25",
+    "difficulty": "easy",
+    "timeLimit": 12,
+    "hint": "its easy"
+  },
+  {
+    "id": 2,
+    "name": "hard logic",
+    "description": "I speak without a mouth and hear without ears. I have no body, but I come alive with wind. What am I?",
+    "correctAnswer": "echo",
+    "difficulty": "hard",
+    "timeLimit": 30,
+    "hint": "It's a sound."
   }
 ]
