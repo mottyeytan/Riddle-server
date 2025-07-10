@@ -1,6 +1,6 @@
 import dal from '../dal/index.dal.js'
-import { updateRiddleOptions } from '../../client/userInput.js'
-import { riddlesDetails } from '../../client/userInput.js'
+import { updateRiddleOptions } from '../../client/src/controllers/userInput.js'
+import { riddlesDetails } from '../../client/src/controllers/userInput.js'
 
 async function createRiddle(riddleBody){
     const newRiddle = riddleBody;
