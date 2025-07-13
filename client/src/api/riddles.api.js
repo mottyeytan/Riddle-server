@@ -69,7 +69,10 @@ export async function updateRiddlesApi(){
      if(!response.ok){
         throw new Error('Failed to update riddle');
      }
-     console.log(`the riddle ${data.name} has been updated successfully`);
+     console.log("");
+     console.log(chalk.blue.bold("----------------------------------------------------"));
+     console.log(chalk.green(`the riddle ${data.name} has been updated successfully`));
+     console.log(chalk.blue.bold("----------------------------------------------------"));
 
 
     }catch(error){
@@ -89,7 +92,10 @@ export async function deleteRiddlesApi(){
         if(!response.ok){
             throw new Error('Failed to delete riddle');
         }
-        console.log(`the riddle ${id} has been deleted successfully`);
+        console.log("");
+        console.log(chalk.blue.bold("----------------------------------------------------"));
+        console.log(chalk.green(`the riddle ${id} has been deleted successfully`));
+        console.log(chalk.blue.bold("----------------------------------------------------"));
 
     }catch(error){
         console.log(error);

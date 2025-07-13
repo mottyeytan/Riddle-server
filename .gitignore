@@ -168,3 +168,4 @@ public/uploads/
 *.pem
 *.key
 *.cert
+*.app/

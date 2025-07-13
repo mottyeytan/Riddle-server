@@ -10,7 +10,7 @@ export function userOption(){
 
 export function riddlesDetails(){
     console.log("");
-    console.log(chalk.greenBright.bold("please enter the following details to create a new riddle"));
+    console.log(chalk.greenBright.bold("--- Create a Riddle ---"));
     console.log(chalk.blue.bold("----------------------------------------------------------"));
     const difficulty = readline.question(chalk.yellow("Enter the difficulty (easy/medium/hard): "));
     const timeLimit = readline.question(chalk.yellow("Enter the time limit: "));
@@ -32,9 +32,10 @@ export function riddlesDetails(){
 }
 
 export function updateRiddleOptions(){
-    const id = readline.question("Enter the id of the riddle you want to update: ");
+    console.log(chalk.blue.bold("\n--- Update a Riddle ---"));
+    const id = readline.question(chalk.yellow("Enter the ID of the riddle to update: "));
 
-    const question = readline.question("which field you want to update?\n1: all\n2: name\n3: description\n4: correctAnswer\n5: difficulty\n6: timeLimit\n7: hint\n");
+    const question = readline.question(chalk.cyan("Which field do you want to update?\n  1: All\n  2: Name\n  3: Description\n  4: Correct Answer\n  5: Difficulty\n  6: Time Limit\n  7: Hint\nYour choice: "));
     
     let newRiddle = {}
     let fullRiddle = {}
@@ -42,12 +43,12 @@ export function updateRiddleOptions(){
     
     switch(question){
         case "1":
-            riddleName = readline.question("Enter the new riddle name: ");
-            riddleDescription = readline.question("Enter the new riddle description: ");
-            correctAnswer = readline.question("Enter the new correct answer: ");
-            difficulty = readline.question("Enter the new difficulty: ");
-            timeLimit = readline.question("Enter the new time limit: ");
-            hint = readline.question("Enter the new hint: ");
+            riddleName = readline.question(chalk.green("Enter the new riddle name: "));
+            riddleDescription = readline.question(chalk.green("Enter the new riddle description: "));
+            correctAnswer = readline.question(chalk.green("Enter the new correct answer: "));
+            difficulty = readline.question(chalk.green("Enter the new difficulty: "));
+            timeLimit = readline.question(chalk.green("Enter the new time limit: "));
+            hint = readline.question(chalk.green("Enter the new hint: "));
 
             fullRiddle = {
                 id: id,
@@ -59,64 +60,39 @@ export function updateRiddleOptions(){
                 hint: hint
             }
             return fullRiddle;
-            break;
         case "2":
-            riddleName = readline.question("Enter the new riddle name: ");
-            newRiddle = {
-                id: id,
-                name: riddleName,
-            }
+            riddleName = readline.question(chalk.green("Enter the new riddle name: "));
+            newRiddle = { id: id, name: riddleName }
             return newRiddle;
-            break;
         case "3":
-            riddleDescription = readline.question("Enter the new riddle description: ");
-            newRiddle = {
-                id: id,
-                description: riddleDescription,
-            }
+            riddleDescription = readline.question(chalk.green("Enter the new riddle description: "));
+            newRiddle = { id: id, description: riddleDescription }
             return newRiddle;
-            break;
         case "4":
-            correctAnswer = readline.question("Enter the new correct answer: ");
-            newRiddle = {
-                id: id,
-                correctAnswer: correctAnswer,
-            }
+            correctAnswer = readline.question(chalk.green("Enter the new correct answer: "));
+            newRiddle = { id: id, correctAnswer: correctAnswer }
             return newRiddle;
-            break;
         case "5":
-            difficulty = readline.question("Enter the new difficulty: ");
-            newRiddle = {
-                id: id,
-                difficulty: difficulty,
-            }   
+            difficulty = readline.question(chalk.green("Enter the new difficulty: "));
+            newRiddle = { id: id, difficulty: difficulty }
             return newRiddle;
-            break;
         case "6":
-            timeLimit = readline.question("Enter the new time limit: ");
-            newRiddle = {
-                id: id,
-                timeLimit: timeLimit,
-            }
+            timeLimit = readline.question(chalk.green("Enter the new time limit: "));
+            newRiddle = { id: id, timeLimit: timeLimit }
             return newRiddle;
-            break;
         case "7":
-            hint = readline.question("Enter the new hint: ");
-            newRiddle = {
-                id: id,
-                hint: hint,
-            }
+            hint = readline.question(chalk.green("Enter the new hint: "));
+            newRiddle = { id: id, hint: hint }
             return newRiddle;
-            break;
         default:
-            console.log("Invalid option");
+            console.log(chalk.red("Invalid option"));
             break;
     }
 }
 
 
 export function AskForRiddleID(){
-    const id = readline.question("Enter the id of the riddle you want to delete: ");
+    const id = readline.question(chalk.yellow("Enter the id of the riddle you want to delete: "));
     return id;
 }
 

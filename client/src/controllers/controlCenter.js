@@ -4,10 +4,9 @@ import { difficultyMenu } from '../menus/difficulty.js';
 import { createRiddlesApi, updateRiddlesApi, deleteRiddlesApi, readRiddlesAPi } from '../api/riddles.api.js';
 import { startGame } from '../game.js';
 import { createPlayerApi, checkPlayerExistsApi, getPlayerRecordApi, checkPlayerTimeAndUpdateApi } from '../api/player.api.js';
+import { nicePrintRiddles } from '../utils/NicePrint.js';
 
-
-
-export function gameControl(){
+export async function gameControl(){
     mainMenu();
     const option = userOption();
 
@@ -21,7 +20,7 @@ export function gameControl(){
             createRiddlesApi();
             break;
         case '3':
-            readRiddlesAPi();
+            nicePrintRiddles();
             break;
         case '4':
             updateRiddlesApi();
