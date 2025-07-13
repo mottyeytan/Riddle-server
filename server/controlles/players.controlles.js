@@ -1,4 +1,4 @@
-import { createPlayer, checkPlayerTimeAndUpdate, checkPlayerExists, getPlayerRecord } from '../services/players.services.js'
+import { createPlayer, checkPlayerTimeAndUpdate, checkPlayerExists, getPlayerRecord, getLeaderboard } from '../services/players.services.js'
 
 
 //POST
@@ -73,6 +73,17 @@ export const getPlayerRecordController = async (req, res) => {
             console.log(`Player not found`);
         }
         
+    }catch(err){
+        res.status(500).json({ error: err.message });
+    }
+}
+
+//GET
+
+export const getLeaderboardController = async (req, res) => {
+    try{
+        const leaderboard = await getLeaderboard();
+        res.status(200).json({ leaderboard });
     }catch(err){
         res.status(500).json({ error: err.message });
     }

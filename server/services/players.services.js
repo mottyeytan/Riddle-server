@@ -93,4 +93,15 @@ export async function getPlayerRecord(name){
     }
 }
 
+export async function getLeaderboard(){
+    try{
+        const players = await db.players.GetAll();
+        const sortedPlayers = players.sort((a, b) => a.record - b.record);
+        return sortedPlayers;
+    }catch(err){
+        console.log(err);
+        return err;
+    }
+}
+
 

@@ -79,3 +79,13 @@ export async function getPlayerRecordApi(name){
     }
 }
 
+export async function getLeaderboardApi(){
+    try{
+        const response = await fetch(`${baseUrl}/getLeaderboard`);
+        return await response.json();
+    }catch(error){
+        console.log(error);
+        return false;
+    }
+}
+

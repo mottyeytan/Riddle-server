@@ -4,7 +4,7 @@ import { difficultyMenu } from '../menus/difficulty.js';
 import { createRiddlesApi, updateRiddlesApi, deleteRiddlesApi, readRiddlesAPi } from '../api/riddles.api.js';
 import { startGame } from '../game.js';
 import { createPlayerApi, checkPlayerExistsApi, getPlayerRecordApi, checkPlayerTimeAndUpdateApi } from '../api/player.api.js';
-import { nicePrintRiddles } from '../utils/NicePrint.js';
+import { nicePrintRiddles, printLeaderboard } from '../utils/NicePrint.js';
 
 export async function gameControl(){
     mainMenu();
@@ -23,16 +23,16 @@ export async function gameControl(){
             nicePrintRiddles();
             break;
         case '4':
-            updateRiddlesApi();
+             updateRiddlesApi();
             break;
         case '5':
-            deleteRiddlesApi();
+             deleteRiddlesApi();
             break;
         case '6':
-            return;
+             await printLeaderboard();
+             break;
         case '7':
             return;
     }
 }
 
-gameControl();
