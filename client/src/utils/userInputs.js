@@ -4,17 +4,20 @@ import readline from 'readline-sync';
 
 
 export function userOption(){
-    const option = chalk.gray(readline.question("Enter your option: "));
+    const option = readline.question("Enter your option: ");
     return option;
 }
 
 export function riddlesDetails(){
-    const difficulty = (readline.question("Enter the difficulty (easy/medium/hard): "));
-    const timeLimit = (readline.question("Enter the time limit: "));
-    const riddleName = (readline.question("Enter the riddle name: "));
-    const riddleDescription = (readline.question("Enter the description: "));
-    const hint = (readline.question("Enter the hint: "));
-    const correctAnswer = (readline.question("Enter the correct answer: "));
+    console.log("");
+    console.log(chalk.greenBright.bold("please enter the following details to create a new riddle"));
+    console.log(chalk.blue.bold("----------------------------------------------------------"));
+    const difficulty = readline.question(chalk.yellow("Enter the difficulty (easy/medium/hard): "));
+    const timeLimit = readline.question(chalk.yellow("Enter the time limit: "));
+    const riddleName = readline.question(chalk.yellow("Enter the riddle name: "));
+    const riddleDescription = readline.question(chalk.yellow("Enter the description: "));
+    const hint = readline.question(chalk.yellow("Enter the hint: "));
+    const correctAnswer = readline.question(chalk.yellow("Enter the correct answer: "));
 
     return {
         id: null,
@@ -120,4 +123,21 @@ export function AskForRiddleID(){
 export function playerDetails(){
     const name = readline.question("Enter your name: ");
     return name;
+}
+
+export function difficultyChoice(){
+    const choice = readline.question("your difficulty level: ").toLowerCase().trim();
+    
+    let difficulty;
+   
+    if(choice === '1' || choice === 'easy'){
+        difficulty = 'easy';
+    }else if(choice === '2' || choice === 'medium'){
+        difficulty = 'medium';
+    }else if(choice === '3' || choice === 'hard'){
+        difficulty = 'hard';
+    }else{
+        difficulty = 'easy';
+    }
+    return difficulty;
 }

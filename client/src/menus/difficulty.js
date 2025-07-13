@@ -1,4 +1,5 @@
 import chalk from 'chalk';
+import { userOption } from '../utils/userInputs.js';
 
 export function difficultyMenu(){
     console.log(`
@@ -10,4 +11,3 @@ ${chalk.blue.bold('----------------')}
     `)
 }
 
-difficultyMenu();

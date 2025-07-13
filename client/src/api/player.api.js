@@ -3,9 +3,7 @@ import { playerDetails } from '../utils/userInputs.js';
 const baseUrl = 'http://localhost:3000/player';
 
 //POST
-export async function createPlayerApi(){
-    const name = playerDetails();
-
+export async function createPlayerApi(name){
     try{
         const response = await fetch(`${baseUrl}/createPlayer/${name}`, {
             method: 'POST',
@@ -17,7 +15,6 @@ export async function createPlayerApi(){
         if(!response.ok){
             throw new Error('Failed to create player');
         }
-        console.log(`the player ${name} has been created successfully`);
 
     }catch(error){
         console.log(error);
@@ -57,7 +54,6 @@ export async function checkPlayerExistsApi(name){
             return response.json();
         }
 
-        console.log(`the player ${name} exists`);
         return response.json();
 
     }catch(error){
@@ -83,4 +79,3 @@ export async function getPlayerRecordApi(name){
     }
 }
 
-checkPlayerExistsApi("yakov").then(a => console.log(a.exists));

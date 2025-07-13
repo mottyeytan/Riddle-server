@@ -3,6 +3,7 @@ import { readRiddlesAPi } from '../api/riddles.api.js';
 
 export async function getRiddlesObject(){
     const data = await readRiddlesAPi();
+    
     const riddles = data.riddle;
     
     const riddlesClass = riddles.map(riddle => new Riddle(
@@ -17,4 +18,3 @@ export async function getRiddlesObject(){
     return riddlesClass;
 }
 
-getRiddlesObject().then(riddles => console.log(riddles));

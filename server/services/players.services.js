@@ -49,7 +49,7 @@ export async function checkPlayerTimeAndUpdate(name, time) {
 
             await db.players.Write(players);
 
-            console.log("player record updated successfully");
+            
             return true;
 
         }else{

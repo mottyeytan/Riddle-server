@@ -1,4 +1,5 @@
 import { checkPlayerTimeAndUpdate } from "../services/players.services.js";
+import chalk from "chalk";
 
 class Player{
     constructor(){
@@ -20,12 +21,16 @@ class Player{
         averageTime = totalTime / this.times.length;
         
         console.log("")
-        console.log(`great job ${this.name}!`)
-        console.log(`Total time: ${totalTime} seconds`);
-        console.log(`Average per riddle:: ${averageTime} seconds`);
+        console.log(chalk.green(`great job ${this.name}!`))
+        console.log(chalk.yellow.bold("----------------------------"))
+        console.log("")
+        console.log(chalk.blue(`Total time: ${totalTime} seconds`));
+        console.log(chalk.blue(`Average per riddle:: ${averageTime} seconds`));
+        console.log("")
 
         if(await checkPlayerTimeAndUpdate(this.name, totalTime)){
-            console.log(`New record for ${this.name}: ${totalTime} seconds`);
+            console.log(chalk.yellow.bold("----------------------------"))
+            console.log(chalk.bgGreenBright.white(`New record for ${this.name}: ${totalTime} seconds`));
         }
         
         // Check for time penalties

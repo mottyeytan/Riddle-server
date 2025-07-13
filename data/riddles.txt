@@ -16,5 +16,95 @@
     "difficulty": "hard",
     "timeLimit": 30,
     "hint": "It's a sound."
+  },
+  {
+    "id": 3,
+    "name": "math",
+    "description": "5 + 5",
+    "correctAnswer": "10",
+    "difficulty": "easy",
+    "timeLimit": 12,
+    "hint": "easy"
+  },
+  {
+    "id": 4,
+    "name": "easy math",
+    "description": "10 + 5?",
+    "correctAnswer": "15",
+    "difficulty": "easy",
+    "timeLimit": 13,
+    "hint": "easy"
+  },
+  {
+    "id": 5,
+    "name": "hard math",
+    "description": "193 * 23?",
+    "correctAnswer": "4439",
+    "difficulty": "hard",
+    "timeLimit": 12,
+    "hint": "hard"
+  },
+  {
+    "id": 6,
+    "name": "fsdf",
+    "description": "dfdfd",
+    "correctAnswer": "fdfd",
+    "difficulty": "hard",
+    "timeLimit": 13,
+    "hint": "fddfd"
+  },
+  {
+    "id": 7,
+    "name": "defe",
+    "description": "efe",
+    "correctAnswer": "efeefe",
+    "difficulty": "hard",
+    "timeLimit": 14,
+    "hint": "fef"
+  },
+  {
+    "id": 8,
+    "name": "fgrfgrf",
+    "description": "frgfrg",
+    "correctAnswer": "gfdgr",
+    "difficulty": "hard",
+    "timeLimit": 15,
+    "hint": "frfgf"
+  },
+  {
+    "id": 9,
+    "name": "fdfdes",
+    "description": "gfd",
+    "correctAnswer": "dfd",
+    "difficulty": "hard",
+    "timeLimit": 15,
+    "hint": "fg"
+  },
+  {
+    "id": 10,
+    "name": "\u001b[32mEnter the riddle name: \u001b[39m",
+    "description": "\u001b[32mEnter the description: \u001b[39m",
+    "correctAnswer": "\u001b[32mEnter the correct answer: \u001b[39m",
+    "difficulty": "\u001b[32mEnter the difficulty (easy/medium/hard): \u001b[39m",
+    "timeLimit": null,
+    "hint": "\u001b[32mEnter the hint: \u001b[39m"
+  },
+  {
+    "id": 11,
+    "name": "rere",
+    "description": "edfef",
+    "correctAnswer": "fe",
+    "difficulty": "hard",
+    "timeLimit": 45,
+    "hint": "efe"
+  },
+  {
+    "id": 12,
+    "name": "ffv",
+    "description": "ffr",
+    "correctAnswer": "fr",
+    "difficulty": "hard",
+    "timeLimit": 14,
+    "hint": "fr"
   }
 ]

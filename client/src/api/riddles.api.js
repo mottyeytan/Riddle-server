@@ -1,12 +1,13 @@
 import { userOption, riddlesDetails, updateRiddleOptions, AskForRiddleID } from '../utils/userInputs.js';
+import chalk from 'chalk';
 
 const baseUrl = 'http://localhost:3000/riddles';
 
 //POST
-export async function createRiddelApi(){
+export async function createRiddlesApi(){
    try{
        const riddles = riddlesDetails();
-       console.log("riddles",riddles,typeof riddles);
+       
        const response = await fetch(`${baseUrl}/createRiddle`, {
            method: 'POST',
            headers: {
@@ -18,8 +19,11 @@ export async function createRiddelApi(){
         throw new Error('Failed to create riddle');
        }
        const data = await response.json();
-       console.log(data)
-       console.log(`the riddle ${riddles.name} has been created successfully`);
+
+       console.log("");
+       console.log(chalk.blue.bold("----------------------------------------------------"));
+       console.log(chalk.green(`the riddle ${riddles.name} has been created successfully`));
+       console.log(chalk.blue.bold("----------------------------------------------------"));
        return data;
 
 
@@ -47,7 +51,7 @@ export async function readRiddlesAPi(){
 }
 
 //PUT
-export async function updateRiddleController(){
+export async function updateRiddlesApi(){
     const data = updateRiddleOptions();
 
     const id = data.id;
@@ -74,7 +78,7 @@ export async function updateRiddleController(){
 }
 
 //DELETE
-export async function deleteRiddleController(){
+export async function deleteRiddlesApi(){
     const id = await AskForRiddleID();
 
     try{

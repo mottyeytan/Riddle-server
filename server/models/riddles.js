@@ -1,4 +1,5 @@
 import readline from "readline-sync";
+import chalk from "chalk";
 
 class Riddle {
     constructor(id, difficulty, timeLimit, hint, name, taskDescription, correctAnswer){
@@ -12,10 +13,10 @@ class Riddle {
         this.correctAnswer = correctAnswer;
     }
     ask(){
-        
-        console.log(this.name)
-        console.log("------------------")
-        console.log(this.taskDescription);
+        console.log("");
+        console.log(chalk.blue.bold(this.name))
+        console.log(chalk.yellow.bold("------------------"))
+        console.log(chalk.blue(this.taskDescription));
         console.log("")
 
         const hint = readline.question("do you want a hint? yes/no: ")
