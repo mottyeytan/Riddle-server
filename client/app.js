@@ -1,3 +1,3 @@
-import { gameControl } from './controllers/controlCenter.js';
+import { gameControl } from './src/controllers/controlCenter.js';
 
 gameControl();

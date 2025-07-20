@@ -1,55 +1,28 @@
 import db from '../dal/index.dal.js'
+import { createPlayerDal, getTimeDal, updateTimeDal, checkPlayerExistsDal , getAllRecordsDal} from '../dal/players.js'
 
 export async function createPlayer(name) {
-    let players = [];
-    let newID = 1;
-
-    try{
-        const data = await db.players.GetAll();
-        
-        if(Array.isArray(data) && data.length > 0){
-            players = data;
-        
-            if(players.length > 0){
-                const lastID = players[players.length - 1].id;
-                newID = lastID + 1;
-            }  
-        }
-        
-    }catch(err){console.log(err);}
-        
-    
-    const newPlayer = {
-        id:newID,
-        name:name,
+    const player = {
+        name: name,
         record: null
     }
-    
-    players.push(newPlayer);
-
     try{
-        await db.players.Write(players);
+        const playerData = await createPlayerDal(player);
+        return playerData;
+
     }catch(err){
         console.log(err);
         return err;
     }
-
-    console.log("player created successfully");
 }
 
 export async function checkPlayerTimeAndUpdate(name, time) {
     try{
+        const timeData = await getTimeDal(name);
 
-        const players = await db.players.GetAll();
+        if(timeData === null || timeData > time){
+            await updateTimeDal(name, time);
 
-        const index = players.findIndex(player => player.name === name);
-
-        if(!players[index].record || players[index].record > time){
-            players[index].record = time;
-
-            await db.players.Write(players);
-
-            
             return true;
 
         }else{
@@ -65,12 +38,8 @@ export async function checkPlayerTimeAndUpdate(name, time) {
 
 export async function checkPlayerExists(name){
     try{
-
-        const players = await db.players.GetAll();
-
-        const found = players.some(player => player.name === name);
-
-        return found;
+        const exists = await checkPlayerExistsDal(name);
+        return exists;
         
     }catch(err){
         console.log(err);
@@ -81,11 +50,8 @@ export async function checkPlayerExists(name){
 export async function getPlayerRecord(name){
     try{
 
-        const players = await db.players.GetAll();
-
-        const player = players.find(player => player.name === name);
-
-        return player.record;
+        const record = await getTimeDal(name);
+        return record;
 
     }catch(err){
         console.log(err);
@@ -95,13 +61,17 @@ export async function getPlayerRecord(name){
 
 export async function getLeaderboard(){
     try{
-        const players = await db.players.GetAll();
-        const sortedPlayers = players.sort((a, b) => a.record - b.record);
+        const data = await getAllRecordsDal();
+
+        const cleanData = data.map(player => player.record);
+        
+        const sortedPlayers = cleanData.sort((a, b) => a - b);
         return sortedPlayers;
     }catch(err){
         console.log(err);
         return err;
     }
 }
+
 
 
