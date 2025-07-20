@@ -32,6 +32,7 @@ export function riddlesDetails(){
 }
 
 export function updateRiddleOptions(){
+    console.clear();
     console.log(chalk.blue.bold("\n--- Update a Riddle ---"));
     const id = readline.question(chalk.yellow("Enter the ID of the riddle to update: "));
 

@@ -77,7 +77,7 @@ export async function updatePlayerRecordDal(id, record){
 
 export async function getAllRecordsDal(){
     try{
-        const {data, error} = await supabase.from('Players').select('record');
+        const {data, error} = await supabase.from('Players').select('record, name');
         if (error) {
             throw error;
         }

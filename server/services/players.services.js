@@ -63,9 +63,12 @@ export async function getLeaderboard(){
     try{
         const data = await getAllRecordsDal();
 
-        const cleanData = data.map(player => player.record);
-        
-        const sortedPlayers = cleanData.sort((a, b) => a - b);
+        const cleanData = data.map(player => ({
+            name: player.name,
+            record: player.record,
+        }));
+
+        const sortedPlayers = cleanData.sort((a, b) => a.record - b.record);
         return sortedPlayers;
     }catch(err){
         console.log(err);

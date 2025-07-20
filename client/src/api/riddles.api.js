@@ -56,6 +56,8 @@ export async function updateRiddlesApi(){
 
     const id = data.id;
 
+    delete data.id;
+
     try{
 
         const response = await fetch(`${baseUrl}/updateRiddle/${id}`, 
@@ -69,9 +71,10 @@ export async function updateRiddlesApi(){
      if(!response.ok){
         throw new Error('Failed to update riddle');
      }
+     const data1 = await response.json();
      console.log("");
      console.log(chalk.blue.bold("----------------------------------------------------"));
-     console.log(chalk.green(`the riddle ${data.name} has been updated successfully`));
+     console.log(chalk.green(`the riddle ${data1.name} has been updated successfully`)); 
      console.log(chalk.blue.bold("----------------------------------------------------"));
 
 
