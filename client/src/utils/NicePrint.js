@@ -32,7 +32,7 @@ export async function printLeaderboard(){
         leaderboard.forEach((player, index) => {
             const rank = `${index + 1}.`.padEnd(4);
             const name = player.name.padEnd(20);
-            const score = player.record ? `${player.record.toFixed(3)}s` : 'N/A';
+            const score = player.record ? `${player.record.toFixed(3)}s` : "N/A";
             console.log(chalk.yellow("----------------------------------------"));
             console.log(`${chalk.bold(rank)} ${chalk.cyan(name)} ${chalk.green(score)}`);
         });

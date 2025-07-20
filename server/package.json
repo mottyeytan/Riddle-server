@@ -14,9 +14,14 @@
   "type": "module",
   "dependencies": {
     "express": "^4.21.2",
-    "mongoose": "^8.10.0"
+    "mongoose": "^8.10.0",
+    "supabase": "^1.160.0",
+    "dotenv": "^16.4.7",
+    "@supabase/supabase-js": "^2.52.0"
   },
   "devDependencies": {
+    "@supabase/supabase-js": "^2.52.0",
+    "dotenv": "^16.6.1",
     "nodemon": "^3.1.10"
   }
 }
