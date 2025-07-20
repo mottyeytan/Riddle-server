@@ -17,7 +17,8 @@
     "mongoose": "^8.10.0",
     "supabase": "^1.160.0",
     "dotenv": "^16.4.7",
-    "@supabase/supabase-js": "^2.52.0"
+    "@supabase/supabase-js": "^2.52.0",
+    "mongodb": "^6.11.0"
   },
   "devDependencies": {
     "@supabase/supabase-js": "^2.52.0",
