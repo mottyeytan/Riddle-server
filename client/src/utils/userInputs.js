@@ -9,7 +9,9 @@ export function userOption(){
 }
 
 export function riddlesDetails(){
+    
     console.log("");
+    console.clear()
     console.log(chalk.greenBright.bold("--- Create a Riddle ---"));
     console.log(chalk.blue.bold("----------------------------------------------------------"));
     const difficulty = readline.question(chalk.yellow("Enter the difficulty (easy/medium/hard): "));

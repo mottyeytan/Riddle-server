@@ -1,4 +1,3 @@
-import db from '../dal/index.dal.js'
 import { createPlayerDal, getTimeDal, updateTimeDal, checkPlayerExistsDal , getAllRecordsDal} from '../dal/players.js'
 
 export async function createPlayer(name) {
@@ -63,12 +62,7 @@ export async function getLeaderboard(){
     try{
         const data = await getAllRecordsDal();
 
-        const cleanData = data.map(player => ({
-            name: player.name,
-            record: player.record,
-        }));
-
-        const sortedPlayers = cleanData.sort((a, b) => a.record - b.record);
+        const sortedPlayers = data.sort((a, b) => a.record - b.record);
         return sortedPlayers;
     }catch(err){
         console.log(err);
