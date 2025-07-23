@@ -127,5 +127,4 @@ export async function getPlayerPlayedRiddlesApi(name){
     }
 }
 
-await updateRiddlesPlayedIdsApi("motty", [1,2,3,4])
 
