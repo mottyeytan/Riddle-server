@@ -1,9 +1,10 @@
-import { createPlayerDal, getTimeDal, updateTimeDal, checkPlayerExistsDal , getAllRecordsDal} from '../dal/players.js'
+import { createPlayerDal, getTimeDal, updateTimeDal, checkPlayerExistsDal , getAllRecordsDal, getRiddlesPlayedIdsDal, updateRiddlesPlayedIdsDal, getPlayerPlayedRiddlesDal} from '../dal/players.js'
 
 export async function createPlayer(name) {
     const player = {
         name: name,
-        record: null
+        record: null,
+        played:null
     }
     try{
         const playerData = await createPlayerDal(player);
@@ -69,6 +70,42 @@ export async function getLeaderboard(){
         return err;
     }
 }
+
+export async function updateRiddlesPlayedIds(name, riddlesPlayedIds){
+    try{
+        const existingPlayed = await getRiddlesPlayedIdsDal(name);
+        
+        const newPlayed = Array.from(new Set([...existingPlayed, ...riddlesPlayedIds]));
+
+        const updated = await updateRiddlesPlayedIdsDal(name, newPlayed);
+        return updated;
+
+    }catch(err){
+        console.log(err);
+        return err;
+    }
+
+}
+
+export async function getPlayerPlayedRiddles(name){
+    try{
+        const played = await getPlayerPlayedRiddlesDal(name);
+        
+        if(played === null || played === undefined || played === '' || played.length === 0){
+            return false;
+        }else{
+            return played;
+        }
+    }catch(err){
+        console.log(err);
+        return false;
+    }
+}
+
+
+
+
+// await updateRiddlesPlayedIds("motty", [9,12,13,15,18,12]);
 
 
 

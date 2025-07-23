@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import express from 'express';
 import playerRoutes from './routes/player.routes.js';
 import riddlesRoutes from './routes/riddles.routes.js';

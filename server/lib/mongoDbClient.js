@@ -8,7 +8,8 @@ export async function connectToMongoDb() {
         await mongoDbClient.connect();
         console.log("Connected to MongoDB");
     } catch (error) {
-        console.error("Error connecting to MongoDB:", error);
+        console.error("Fatal Error: Could not connect to MongoDB. Server is shutting down.", error);
+        process.exit(1); // Exit the process with a failure code
     }
 }
 

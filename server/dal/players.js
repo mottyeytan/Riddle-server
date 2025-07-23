@@ -99,6 +99,46 @@ export async function checkPlayerExistsDal(name){
     }
 }
 
+export async function getRiddlesPlayedIdsDal(name){
+    try{
+        const {data, error} = await supabase.from('Players').select('played').eq('name', name);
+        if (error) {
+            throw error;
+        }
+        
+        return data[0]?.played || [];
+    }catch(err){
+        console.log(err.message)
+        return [];
+    }
+}
+
+export async function updateRiddlesPlayedIdsDal(name, riddlesPlayedIds){
+    try{
+        const {data, error} = await supabase.from('Players').update({played : `{${riddlesPlayedIds.join(',')}}`}).eq('name', name);
+        if (error) {
+            throw error;
+        }
+        return data;
+    }catch(err){
+        console.log(err.message)
+    }
+}
+
+export async function getPlayerPlayedRiddlesDal(name){
+    try{
+        const {data, error} = await supabase.from('Players').select('played').eq('name', name);
+        if (error) {
+            throw error;
+        }
+        return data[0].played;
+    }catch(err){
+        console.log(err.message)
+    }
+}
+
+
+
 
 
 

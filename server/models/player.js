@@ -5,6 +5,7 @@ class Player{
     constructor(){
         this.name = "";
         this.times = [];
+        this.riddlesPlayedIds = [];
     }
 
     recordTime(strat, end){
@@ -24,13 +25,13 @@ class Player{
         console.log(chalk.green(`great job ${this.name}!`))
         console.log(chalk.yellow.bold("----------------------------"))
         console.log("")
-        console.log(chalk.blue(`Total time: ${totalTime} seconds`));
-        console.log(chalk.blue(`Average per riddle:: ${averageTime} seconds`));
+        console.log(chalk.blue(`Total time: ${totalTime.toFixed(2)} seconds`));
+        console.log(chalk.blue(`Average per riddle:: ${averageTime.toFixed(2)} seconds`));
         console.log("")
 
         if(await checkPlayerTimeAndUpdate(this.name, totalTime)){
             console.log(chalk.yellow.bold("----------------------------"))
-            console.log(chalk.bgGreenBright.white(`New record for ${this.name}: ${totalTime} seconds`));
+            console.log(chalk.bgGreenBright.white(`New record for ${this.name}: ${totalTime.toFixed(2)} seconds`));
         }
         
         // Check for time penalties

@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
+    "start": "node --openssl-legacy-provider app.js",
     "dev": "nodemon --watch app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -13,12 +13,12 @@
   "license": "ISC",
   "type": "module",
   "dependencies": {
-    "express": "^4.21.2",
-    "mongoose": "^8.10.0",
-    "supabase": "^1.160.0",
-    "dotenv": "^16.4.7",
     "@supabase/supabase-js": "^2.52.0",
-    "mongodb": "^6.11.0"
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mongodb": "^5.9.0",
+    "mongoose": "^8.10.0",
+    "supabase": "^1.160.0"
   },
   "devDependencies": {
     "@supabase/supabase-js": "^2.52.0",

@@ -1,4 +1,4 @@
-import { createPlayer, checkPlayerTimeAndUpdate, checkPlayerExists, getPlayerRecord, getLeaderboard } from '../services/players.services.js'
+import { createPlayer, checkPlayerTimeAndUpdate, checkPlayerExists, getPlayerRecord, getLeaderboard, updateRiddlesPlayedIds, getPlayerPlayedRiddles } from '../services/players.services.js'
 
 
 //POST
@@ -84,6 +84,27 @@ export const getLeaderboardController = async (req, res) => {
     try{
         const leaderboard = await getLeaderboard();
         res.status(200).json({ leaderboard });
+    }catch(err){
+        res.status(500).json({ error: err.message });
+    }
+}
+
+//PUT
+export const updateRiddlesPlayedIdsController = async (req, res) => {
+    try{
+        const {name, riddlesPlayedIds} = req.body;
+        const updated = await updateRiddlesPlayedIds(name, riddlesPlayedIds);
+        res.status(200).json({ updated });
+    }catch(err){
+        res.status(500).json({ error: err.message });
+    }
+}
+
+export const getPlayerPlayedRiddlesController = async (req, res) => {
+    try{
+        const name = req.params.name;
+        const played = await getPlayerPlayedRiddles(name);
+        res.status(200).json({ played });
     }catch(err){
         res.status(500).json({ error: err.message });
     }

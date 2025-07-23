@@ -16,8 +16,13 @@ export async function createPlayerApi(name){
             throw new Error('Failed to create player');
         }
 
+        const result = await response.json();
+        console.log("Player created successfully:", result);
+        return result;
+
     }catch(error){
-        console.log(error);
+        console.log("Error creating player:", error);
+        throw error;
     }
 }
 
@@ -89,4 +94,38 @@ export async function getLeaderboardApi(){
     }
 }
 
+export async function updateRiddlesPlayedIdsApi(name, riddlesPlayedIds){
+    const body = {name, riddlesPlayedIds};
+
+    try{
+        const response = await fetch(`${baseUrl}/updateRiddlesPlayedIds`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(body)
+        })
+
+        if(!response.ok){
+            throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+        }
+
+        return await response.json();
+
+    }catch(error){
+        console.log("updateRiddlesPlayedIdsApi error:", error);
+    }
+}
+
+export async function getPlayerPlayedRiddlesApi(name){
+    try{
+        const response = await fetch(`${baseUrl}/getPlayerPlayedRiddles/${name}`);
+        return await response.json();
+    }catch(error){
+        console.log(error);
+        return false;
+    }
+}
+
+await updateRiddlesPlayedIdsApi("motty", [1,2,3,4])
 
