@@ -48,7 +48,6 @@ export async function startGame(difficulty){
             }
 
     }
-
     
     let playedRiddles = [];
     
@@ -89,18 +88,16 @@ console.log("")
     } 
     const riddlesPlayedIds = player.riddlesPlayedIds.map(id => Number(id));
 
-
      await new Promise(resolve => setTimeout(resolve, 100));
     try{
         await updateRiddlesPlayedIdsApi(player.name, riddlesPlayedIds);
     }catch(error){
         console.error("Failed to update riddles played ids:", error);
     }
-        
-
-    
+    console.log(chalk.gray("--------------------------------"))
     player.showStats(filteredRiddles);
-
+    console.log(chalk.gray("--------------------------------"))
+    
 }
 
 

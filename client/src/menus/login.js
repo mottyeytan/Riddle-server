@@ -4,9 +4,6 @@ import { signUpApi, loginApi } from '../api/auth.js';
 import { userOption } from '../utils/userInputs.js';
 
 
-
-
-
 export async function MainLoginMenu() {
     console.clear();
     console.log(`

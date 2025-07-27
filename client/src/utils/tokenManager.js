@@ -9,7 +9,7 @@ export async function saveToken(token) {
         const tokenData = {
             token,
             timestamp: Date.now(),
-            expiresAt: Date.now() + (24 * 60 * 60 * 1000) // 24 שעות 
+            expiresAt: Date.now() + (24 * 60 * 60 * 1000) 
         };
         
         await fs.writeFile(TOKEN_FILE, JSON.stringify(tokenData, null, 2));
