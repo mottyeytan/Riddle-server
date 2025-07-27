@@ -43,3 +43,5 @@ export async function printLeaderboard(){
         console.log(chalk.red("Leaderboard is empty."));
     }
 }
+
+

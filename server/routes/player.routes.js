@@ -1,6 +1,7 @@
 import express from 'express';
 import { createPlayerController, checkPlayerTimeAndUpdateController, checkPlayerExistsController, getPlayerRecordController, getLeaderboardController, updateRiddlesPlayedIdsController, getPlayerPlayedRiddlesController } from '../controlles/players.controlles.js';
 
+
 const router = express.Router();
 
 router.post('/createPlayer/:name', createPlayerController);

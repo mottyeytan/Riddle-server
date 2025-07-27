@@ -5,28 +5,34 @@ import { createRiddlesApi, updateRiddlesApi, deleteRiddlesApi, readRiddlesAPi } 
 import { startGame } from '../game.js';
 import { createPlayerApi, checkPlayerExistsApi, getPlayerRecordApi, checkPlayerTimeAndUpdateApi } from '../api/player.api.js';
 import { nicePrintRiddles, printLeaderboard } from '../utils/NicePrint.js';
+import { MainLoginMenu } from '../menus/login.js';
 
 export async function gameControl(){
-    mainMenu();
-    const option = userOption();
+
+    await MainLoginMenu();
+
+
+    
+    await mainMenu();
+    const option = await userOption();
 
     switch(option){
         case '1':
-            difficultyMenu();
-            const difficulty = difficultyChoice(); 
+            await difficultyMenu();
+            const difficulty = await difficultyChoice(); 
             startGame(difficulty);
             break;
         case '2':
-            createRiddlesApi();
+            await createRiddlesApi();
             break;
         case '3':
-            nicePrintRiddles();
+            await nicePrintRiddles();
             break;
         case '4':
-             updateRiddlesApi();
+             await updateRiddlesApi();
             break;
         case '5':
-             deleteRiddlesApi();
+             await deleteRiddlesApi();
             break;
         case '6':
              await printLeaderboard();

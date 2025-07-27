@@ -13,6 +13,18 @@ export async function getPlayersDal() {
     }
 }
 
+export async function getPlayerByNameDal(name){
+    try{
+        const {data, error} = await supabase.from('Players').select('*').eq('name', name);
+        if(!data || data.length === 0){
+            return false;
+        }
+        return data[0];
+    }catch(err){
+        console.log(err.message)
+    }
+}
+
 export async function createPlayerDal(player) {
     
     try{
@@ -20,7 +32,7 @@ export async function createPlayerDal(player) {
         if (error) {
             throw error;
         }
-        return data;
+        return true
 
     }catch(err){
         console.log(err.message)
@@ -136,6 +148,7 @@ export async function getPlayerPlayedRiddlesDal(name){
         console.log(err.message)
     }
 }
+
 
 
 

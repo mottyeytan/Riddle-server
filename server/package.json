@@ -23,6 +23,9 @@
   "devDependencies": {
     "@supabase/supabase-js": "^2.52.0",
     "dotenv": "^16.6.1",
-    "nodemon": "^3.1.10"
+    "nodemon": "^3.1.10",
+    "cookie-parser": "^1.4.7",
+    "jsonwebtoken": "^9.0.2",
+    "bcrypt": "^5.1.1"
   }
 }

@@ -1,47 +1,64 @@
 import { getRiddlesObject } from './instance/riddles.js';
 import { getPlayersObject } from './instance/player.js';
 import { checkPlayerExistsApi, createPlayerApi, getPlayerRecordApi, updateRiddlesPlayedIdsApi, getPlayerPlayedRiddlesApi } from './api/player.api.js';
+import { getToken } from './utils/tokenManager.js';
+import jwt from 'jsonwebtoken';
 import readline from 'readline';
 import chalk from 'chalk';
+import { playerExists } from './utils/playerExists.js';
 
 
 export async function startGame(difficulty){
     const riddles = await getRiddlesObject();
     const player = await getPlayersObject();
 
-    console.log(`${chalk.green.bold("welcome to the riddle game")}`);
-    console.log(`${chalk.blue.bold("----------------------------")}`);
+    // console.log(`${chalk.green.bold("welcome to the riddle game")}`);
+    // console.log(`${chalk.blue.bold("----------------------------")}`);
     
-    const rl = readline.createInterface({
-      input: process.stdin,
-      output: process.stdout
-    });
-    const name = await new Promise(res => {
-      rl.question("what's your name? ", res);
-    });
-    rl.close();
+    // const rl = readline.createInterface({
+    //   input: process.stdin,
+    //   output: process.stdout
+    // });
+    // const name = await new Promise(res => {
+    //   rl.question("what's your name? ", res);
+    // });
+    // rl.close();
 
+    const token = await getToken();
+    const name = jwt.decode(token.token).name;
+    
     player.name = name;
 
-    const playerExists = await checkPlayerExistsApi(player.name);
+    if(jwt.decode(token.token).role === 'guest'){
+        const PlayerExists = await playerExists();
+        if(!PlayerExists){
+            console.log(chalk.gray.bold("________________________________________________________"));
+            console.log("")
+            console.log(chalk.green.bold(`hi ${player.name}, its good to have you here for the first time`))
+            console.log("")
+        }else{
+            const recordResponse = await getPlayerRecordApi(player.name);
+            
+            if (recordResponse && recordResponse.record !== null) {
+                const record = recordResponse.record;
+                console.log(chalk.gray.bold("________________________________________________________"));
+                console.log("")
+                console.log(chalk.green(`Hi ${player.name}! Your previous record is ${record.toFixed(2)} seconds.`));
+                console.log("")
+            }
 
-    if(!playerExists.exists){
-        console.log("Creating new player...");
-        try {
-            await createPlayerApi(player.name);
-            console.log(chalk.blue.bold("----------------------------"));
-            console.log(chalk.green(`Welcome, ${player.name}! Its good to have you here for the first time`));
-        } catch (error) {
-            console.error("Failed to create player:", error);
-            return;
         }
     }else{
         const recordResponse = await getPlayerRecordApi(player.name);
-        const record =  recordResponse.record 
-        
-        console.log(chalk.blue.bold("----------------------------"));
-        console.log(chalk.green(`Hi ${player.name}! Your previous record is ${record.toFixed(2)} seconds.`));
-        
+            
+            if (recordResponse && recordResponse.record !== null) {
+                const record = recordResponse.record;
+                console.log(chalk.gray.bold("________________________________________________________"));
+                console.log("")
+                console.log(chalk.green(`Hi ${player.name}! Your previous record is ${record.toFixed(2)} seconds.`));
+                console.log("")
+            }
+
     }
 
     
@@ -51,13 +68,13 @@ export async function startGame(difficulty){
         const response = await getPlayerPlayedRiddlesApi(player.name);
         if (response && response.played) {
             playedRiddles = response.played;
+            console.log(`${player.name}, you have played riddles: ${playedRiddles}`);
         }
     } catch (error) {
         console.log("Could not fetch played riddles:", error);
         playedRiddles = [];
     }
 
-    console.log(`Player has already played riddles: ${playedRiddles}`);
 
     const filteredRiddlesplayed = riddles.filter(riddle => !playedRiddles.includes(riddle.id));
 
@@ -68,10 +85,12 @@ export async function startGame(difficulty){
         return;
     }
 
-    console.log(`Found ${filteredRiddles.length} new riddles to play at ${difficulty} difficulty.`);
+    console.log(chalk.blue(`found ${filteredRiddles.length} new riddles to play at ${difficulty} difficulty.`));
+console.log(chalk.gray.bold("________________________________________________________"));
+console.log("")
 
     for (let i = 0; i < filteredRiddles.length; i++){
-        console.log(`Playing riddle ID: ${filteredRiddles[i].id}`);
+        console.log(chalk.green(`Playing riddle ID: ${filteredRiddles[i].id}`));
         let start = Date.now();
         filteredRiddles[i].ask();
         let end = Date.now();

@@ -1,27 +1,35 @@
 import chalk from 'chalk';
 
+import rl from 'readline';
 import readline from 'readline-sync';
 
 
-export function userOption(){
-    const option = readline.question("Enter your option: ");
+export async function userOption(ask = "enter your option: "){
+    const rl1 = rl.createInterface({
+        input: process.stdin,
+        output: process.stdout
+      });
+      const option = await new Promise(res => {
+        rl1.question(ask, res);
+      });
+      rl1.close();
     return option;
 }
 
-export function riddlesDetails(){
+export async function riddlesDetails(){
     
     console.log("");
     console.clear()
     console.log(chalk.greenBright.bold("--- Create a Riddle ---"));
     console.log(chalk.blue.bold("----------------------------------------------------------"));
-    const difficulty = readline.question(chalk.yellow("Enter the difficulty (easy/medium/hard): "));
-    const timeLimit = readline.question(chalk.yellow("Enter the time limit: "));
-    const riddleName = readline.question(chalk.yellow("Enter the riddle name: "));
-    const riddleDescription = readline.question(chalk.yellow("Enter the description: "));
-    const hint = readline.question(chalk.yellow("Enter the hint: "));
-    const correctAnswer = readline.question(chalk.yellow("Enter the correct answer: "));
+    const difficulty = await userOption(chalk.yellow("Enter the difficulty (easy/medium/hard): "));
+    const timeLimit = await userOption(chalk.yellow("Enter the time limit: "));
+    const riddleName = await userOption(chalk.yellow("Enter the riddle name: "));
+    const riddleDescription = await userOption(chalk.yellow("Enter the description: "));
+    const hint = await userOption(chalk.yellow("Enter the hint: "));
+    const correctAnswer = await userOption(chalk.yellow("Enter the correct answer: "));
 
-    return {
+    return await {
         id: null,
         name: riddleName,
         description: riddleDescription,
@@ -104,8 +112,8 @@ export function playerDetails(){
     return name;
 }
 
-export function difficultyChoice(){
-    const choice = readline.question("your difficulty level: ").toLowerCase().trim();
+export async function difficultyChoice(){
+    const choice = await userOption("your difficulty level: ");
     
     let difficulty;
    
