@@ -45,17 +45,37 @@ ${chalk.green.bold('--------------------------------')}
 
 async function signupMenu(){
     console.log(chalk.green.bold('--------------------------------'))
-    const name = await userOption("enter your name: ");
-    const password = await userOption("enter your password: ");
-    await signUpApi(name, password);
-
+    let name = await userOption("enter your name: ");
+    let password = await userOption("enter your password: ");
+    const data = await signUpApi(name, password);
+    while(data.loggedIn === false){
+        const data = await signUpApi(name, password);
+        if (data.loggedIn !== false){
+            break;
+        }
+        console.log(chalk.gray("--------------------------------"))
+        console.log(chalk.red('name already exists, please choose another name'));
+        console.log(chalk.gray("--------------------------------"))
+        name = await userOption("enter your name: ");
+        password = await userOption("enter your password: ");
+    }   
 }
 
 async function loginMenu(){
     console.log(chalk.green.bold('--------------------------------'))
-    const name = await userOption("enter your name: ");
-    const password = await userOption("enter your password: ");
-    await loginApi(name, password);
+    let name = await userOption("enter your name: ");
+    let password = await userOption("enter your password: ");
+    const data =  await loginApi(name, password)
+
+    while(data.loggedIn === false){
+        const data =  await loginApi(name, password)
+        if (data.loggedIn !== false){
+            break;
+        }
+        console.log(chalk.red('wrong name or password'));
+        name = await userOption("enter your name: ");
+        password = await userOption("enter your password: ");
+    }
 }
 
 async function adminSignupMenu(){

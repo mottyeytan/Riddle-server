@@ -16,7 +16,7 @@ export const signupController = async (req, res) => {
         
         const existingPlayer = await getPlayerByNameDal(name);
         if (existingPlayer && role !== 'guest') {
-            return res.status(403).json({ message: 'player already exists, please login' });
+            return res.status(403).json({ message: 'player already exists, please login', loggedIn: false });
         }else if(existingPlayer && role === 'guest'){
             playerExists = true;
         }
@@ -48,7 +48,7 @@ export const loginController = async (req, res) => {
         const { name, password } = req.body;
         const existingPlayer = await getPlayerByNameDal(name);
         if (!existingPlayer) {
-            return res.status(403).json({ message: 'player not found' });
+            return res.status(403).json({ message: 'player not found', loggedIn: false });
         }
         const isPasswordValid = await comparePassword(password, existingPlayer.password);
         if (!isPasswordValid) {

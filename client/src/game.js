@@ -12,18 +12,6 @@ export async function startGame(difficulty){
     const riddles = await getRiddlesObject();
     const player = await getPlayersObject();
 
-    // console.log(`${chalk.green.bold("welcome to the riddle game")}`);
-    // console.log(`${chalk.blue.bold("----------------------------")}`);
-    
-    // const rl = readline.createInterface({
-    //   input: process.stdin,
-    //   output: process.stdout
-    // });
-    // const name = await new Promise(res => {
-    //   rl.question("what's your name? ", res);
-    // });
-    // rl.close();
-
     const token = await getToken();
     const name = jwt.decode(token.token).name;
     
@@ -102,7 +90,7 @@ console.log("")
     const riddlesPlayedIds = player.riddlesPlayedIds.map(id => Number(id));
 
 
-     await new Promise(resolve => setTimeout(resolve, 500));
+     await new Promise(resolve => setTimeout(resolve, 100));
     try{
         await updateRiddlesPlayedIdsApi(player.name, riddlesPlayedIds);
     }catch(error){

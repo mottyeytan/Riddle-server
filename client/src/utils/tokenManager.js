@@ -1,5 +1,6 @@
 import jwt from 'jsonwebtoken';
 import fs from 'fs/promises';
+import chalk from 'chalk';
 
 const TOKEN_FILE = './client-token.json';
 
@@ -12,7 +13,9 @@ export async function saveToken(token) {
         };
         
         await fs.writeFile(TOKEN_FILE, JSON.stringify(tokenData, null, 2));
-        console.log("Token saved successfully");
+        console.log(chalk.gray("--------------------------"))
+        console.log(chalk.yellow("Token saved successfully"));
+        console.log(chalk.gray("--------------------------"))
     } catch (error) {
         console.error("Error saving token:", error);
     }

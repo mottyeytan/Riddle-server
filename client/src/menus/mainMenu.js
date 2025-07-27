@@ -1,7 +1,7 @@
 import chalk from 'chalk';
 
 export function mainMenu(){
-    console.clear();
+    // console.clear();
     console.log(`
 ${chalk.blue.bold('choose an option:')}        
 ${chalk.blue.bold('--------------------------------')}

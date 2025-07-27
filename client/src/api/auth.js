@@ -1,5 +1,6 @@
 import { saveToken, getToken } from '../utils/tokenManager.js';
 import { playerExists } from '../utils/playerExists.js';
+import chalk from 'chalk';
 
 const baseUrl = 'http://localhost:3000/auth'
 
@@ -20,16 +21,17 @@ export async function signUpApi(name, password, role = 'user'){
         if(data.token){
             
             await saveToken(data.token);
+            const userRole = data.role;
+            console.log(chalk.gray("--------------------------------"))
+            console.log(chalk.green.bold(`you are signed in as: ${userRole}`));
+            console.log(chalk.gray("--------------------------------"))
+             const PlayerExists = data.playerExists;
+             await playerExists(PlayerExists);
         }else{
-            console.log('signup failed:', data);
+            return data;
         }
 
-
-       const userRole = data.role;
-       console.log(`your signed up as: ${userRole}`);
-        const PlayerExists = data.playerExists;
-        await playerExists(PlayerExists);
-
+        return data;
 
 
     }catch(err){
@@ -52,12 +54,15 @@ export async function loginApi(name, password){
         if(data.token){
             
             await saveToken(data.token);
+
+            const role = data.role;
+            console.log(chalk.gray("--------------------------------"))
+            console.log(chalk.green.bold(`you are logged in as: ${role}`))
+            console.log(chalk.gray("--------------------------------"))
         }else{
-            console.log('login failed:', data);
+            return data;
         }
 
-        const role = data.role;
-        console.log(`your logged in as: ${role}`);
         return data;
 
     }catch(err){
