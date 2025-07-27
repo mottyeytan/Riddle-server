@@ -1,14 +1,20 @@
 import { createPlayerDal, getTimeDal, updateTimeDal, checkPlayerExistsDal , getAllRecordsDal, getRiddlesPlayedIdsDal, updateRiddlesPlayedIdsDal, getPlayerPlayedRiddlesDal} from '../dal/players.js'
 
-export async function createPlayer(name) {
+export async function createPlayer(name, hashedPassword, role = 'user') {
     const player = {
         name: name,
         record: null,
-        played:null
+        played: null,
+        password: hashedPassword,
+        role: role
     }
     try{
         const playerData = await createPlayerDal(player);
-        return playerData;
+        if(playerData){
+            return player;
+        }else{
+            return false;
+        }
 
     }catch(err){
         console.log(err);

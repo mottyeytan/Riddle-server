@@ -1,8 +1,8 @@
 
 import Player from '../../../server/models/player.js';
 
-export  function getPlayersObject(){
-    const player = new Player();
+export async function getPlayersObject(){
+    const player = await new Player();
     return player;
 }
 

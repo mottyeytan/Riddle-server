@@ -2,11 +2,11 @@ import Riddle from '../../../server/models/riddles.js';
 import { readRiddlesAPi } from '../api/riddles.api.js';
 
 export async function getRiddlesObject(){
-    const data = await readRiddlesAPi();
+    const data = await readRiddlesAPi(true);
     
     const riddles = data.riddle;
     
-    const riddlesClass = riddles.map(riddle => new Riddle(
+    const riddlesClass = riddles.map(async riddle =>  await new Riddle(
         riddle.id,
         riddle.difficulty,
         riddle.timeLimit,
@@ -15,6 +15,6 @@ export async function getRiddlesObject(){
         riddle.description, 
         riddle.correctAnswer
     ));
-    return riddlesClass;
-}
+    return await Promise.all(riddlesClass);
 
+}
