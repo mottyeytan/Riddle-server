@@ -33,7 +33,7 @@ export async function gameControl(){
             console.log(chalk.gray("--------------------------------"))
             console.log(chalk.green.bold("you are logged in as: " + jwt.decode(token.token).role))
             console.log(chalk.gray("--------------------------------"))
-            await sleep(2000);
+            await sleep(1000);
             await MainLoginMenu();
         }
         if(backToLogin === '2'){
@@ -42,7 +42,7 @@ export async function gameControl(){
             console.log(chalk.gray("--------------------------------"))
             console.log(chalk.green.bold("you are logged out"))
             console.log(chalk.gray("--------------------------------"))
-            await sleep(2000);
+            await sleep(1000);
             await MainLoginMenu();
         }
         if(backToLogin === '3'){

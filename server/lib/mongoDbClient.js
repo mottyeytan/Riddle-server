@@ -9,7 +9,7 @@ export async function connectToMongoDb() {
         console.log("Connected to MongoDB");
     } catch (error) {
         console.error("Fatal Error: Could not connect to MongoDB. Server is shutting down.", error);
-        process.exit(1); // Exit the process with a failure code
+        process.exit(1); 
     }
 }
 

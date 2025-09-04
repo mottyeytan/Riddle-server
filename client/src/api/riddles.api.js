@@ -1,6 +1,7 @@
 import { userOption, riddlesDetails, updateRiddleOptions, AskForRiddleID } from '../utils/userInputs.js';
 import { getToken } from '../utils/tokenManager.js';
 import chalk from 'chalk';
+
 import jwt from 'jsonwebtoken';
 
 const baseUrl = 'http://localhost:3000/riddles';
@@ -60,7 +61,7 @@ export async function readRiddlesAPi(auth = false){
         
         if(!auth){
         if(role !== 'admin' && role !== 'user'){
-            console.log(chalk.red("You are not authorized to read riddles"));
+            console.log(chalk.red("You are not authorized to read riddle"));
             return;
         }
         }else{

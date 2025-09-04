@@ -1,4 +1,3 @@
-
 import Player from '../../../server/models/player.js';
 
 export async function getPlayersObject(){

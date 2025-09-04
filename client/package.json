@@ -9,12 +9,24 @@
     "build": "echo \"No build process defined for vanilla JS\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["riddle", "game", "client", "frontend", "html", "css", "javascript"],
+  "keywords": [
+    "riddle",
+    "game",
+    "client",
+    "frontend",
+    "html",
+    "css",
+    "javascript"
+  ],
   "author": "",
   "type": "module",
   "license": "ISC",
   "devDependencies": {
     "live-server": "^1.2.2"
   },
-  "dependencies": {}
+  "dependencies": {
+    "chalk": "^5.6.0",
+    "jsonwebtoken": "^9.0.2",
+    "readline-sync": "^1.4.10"
+  }
 }

@@ -5,21 +5,29 @@ import riddlesRoutes from './routes/riddles.routes.js';
 import { connectToMongoDb } from './lib/mongoDbClient.js';
 import authRoutes from './routes/auth.js';
 import cookieParser from 'cookie-parser';
+import cors from 'cors';
 
 
 const server = express();
 
 server.use(express.json());
 server.use(cookieParser());
-
 connectToMongoDb();
+server.use(cors({
+    origin: 'http://localhost:5173',
+    credentials: true
+}));
+
 
 server.use('/player', playerRoutes);
 server.use('/riddles', riddlesRoutes);
 server.use('/auth', authRoutes);
 
-server.listen(3000, () => {
-    console.log('Server is running on port 3000');
+const PORT = process.env.APP_API_URL || 3000;
+
+
+server.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
 });
 
 
