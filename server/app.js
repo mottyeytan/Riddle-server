@@ -13,9 +13,16 @@ const server = express();
 server.use(express.json());
 server.use(cookieParser());
 connectToMongoDb();
-server.use(cors({
-    origin: 'https://ridddlesfront.netlify.app/' || 'http://localhost:5173',
-    credentials: true
+app.use(cors({
+    origin: [
+        'http://localhost:5173',
+        'http://localhost:3000',
+        'https://68b93fe123456--ridddlesfront.netlify.app', 
+        'https://ridddlesfront.netlify.app' 
+    ],
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
 

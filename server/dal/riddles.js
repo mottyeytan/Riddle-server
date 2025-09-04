@@ -55,15 +55,6 @@ export async function deleteRiddleDal(id){
     }
 }
 
-// async function deleteAllRiddlesDal(){
-//     try{
-//         const result = await riddlesCollection.deleteMany({});
-//         return result;
-//     }catch(err){
-//         console.log(err.message)
-//     }
-// }
-
 
 
 
