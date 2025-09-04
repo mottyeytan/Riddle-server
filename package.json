@@ -4,11 +4,14 @@
     "description": "Riddle Game Server",
     "main": "server/app.js",
     "scripts": {
-      "start": "cd server && npm install && node app.js",
-      "build": "cd server && npm install",
-      "dev": "cd server && npm run dev"
+        "start": "cd server && npm install && node app.js",
+        "build": "cd server && npm install",
+        "dev": "cd server && npm run dev"
     },
     "type": "module",
     "author": "",
-    "license": "ISC"
-  }
+    "license": "ISC",
+    "dependencies": {
+        "cors": "^2.8.5"
+    }
+}

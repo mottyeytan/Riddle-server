@@ -10,9 +10,6 @@ import cors from 'cors';
 
 const server = express();
 
-server.use(express.json());
-server.use(cookieParser());
-connectToMongoDb();
 server.use(cors({
     origin: [
         'http://localhost:5173',
@@ -22,8 +19,17 @@ server.use(cors({
     ],
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization']
+    allowedHeaders: ['Content-Type', 'Authorization', 'Accept'],
+    optionsSuccessStatus: 200 
 }));
+
+server.options('*', cors());
+
+server.use(express.static('public'));
+
+server.use(express.json());
+server.use(cookieParser());
+connectToMongoDb();
 
 
 server.use('/player', playerRoutes);
