@@ -11,16 +11,9 @@ import cors from 'cors';
 const server = express();
 
 server.use(cors({
-    origin: [
-        'http://localhost:5173',
-        'http://localhost:3000',
-        'https://68b93fe123456--ridddlesfront.netlify.app', 
-        'https://ridddlesfront.netlify.app' 
-    ],
+    origin: true,
     credentials: true,
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization', 'Accept'],
-    optionsSuccessStatus: 200 
+    
 }));
 
 server.options('*', cors());
