@@ -13,7 +13,7 @@ const server = express();
 server.use(express.json());
 server.use(cookieParser());
 connectToMongoDb();
-app.use(cors({
+server.use(cors({
     origin: [
         'http://localhost:5173',
         'http://localhost:3000',
