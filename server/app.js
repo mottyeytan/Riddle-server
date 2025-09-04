@@ -14,7 +14,7 @@ server.use(express.json());
 server.use(cookieParser());
 connectToMongoDb();
 server.use(cors({
-    origin: 'http://localhost:5173',
+    origin: 'https://ridddlesfront.netlify.app/' || 'http://localhost:5173',
     credentials: true
 }));
 
@@ -23,10 +23,10 @@ server.use('/player', playerRoutes);
 server.use('/riddles', riddlesRoutes);
 server.use('/auth', authRoutes);
 
-const PORT = process.env.APP_API_URL || 3000;
+const PORT = process.env.PORT || 3000;
 
 
-server.listen(PORT, () => {
+server.listen(PORT, '0.0.0.0', () => {
     console.log(`Server is running on port ${PORT}`);
 });
 
