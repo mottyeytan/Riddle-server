@@ -22,6 +22,8 @@ server.use(express.static('public'));
 
 server.use(express.json());
 server.use(cookieParser());
+
+
 connectToMongoDb();
 
 

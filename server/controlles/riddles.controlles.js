@@ -52,16 +52,17 @@ export const updateRiddleController = async (req, res) => {
 export const deleteRiddleController = async (req, res) => {
     try{
         const riddleID  = req.params.id;
+        
 
         if(riddleID){
-            await deleteRiddle(riddleID);
+            await deleteRiddle(parseInt(riddleID));
         }else{
             res.status(404).json({ message: `Riddle not found` });
             console.log(`Riddle not found`);
         }
 
-        res.status(200).json({ message: `Riddle deleted successfully` });
-        console.log(`Riddle deleted successfully`);
+        res.status(200).json({ message: `Riddle deleted fdff successfully`, riddleID });
+        console.log(`Riddle deleted successfully`, riddleID ,typeof riddleID);
     }catch(err){
         res.status(500).json({ error: err.message });
     }
